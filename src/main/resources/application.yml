@@ -8,19 +8,19 @@ spring:
       url: jdbc:mysql://localhost:3306/hdzl?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
       username: root
       password: a111
-      # \u521D\u59CB\u5316\u8FDE\u63A5\u6570
+      # 初始化连接数
       initial-size: 10
-      # \u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5
+      # 最小空闲连接
       min-idle: 5
-      # \u6700\u5927\u8FDE\u63A5\u6570
+      # 最大连接数
       max-active: 20
-      # \u6700\u5927\u7B49\u5F85\u65F6\u95F4
+      # 最大等待时间
       max-wait: 3000
-      # \u6307\u660E\u662F\u5426\u4ECE\u6C60\u4E2D\u53D6\u51FA\u8FDE\u63A5\u524D\u8FDB\u884C\u6821\u9A8C\uFF0C\u6821\u9A8C\u5931\u8D25\u5219\u4ECE\u6C60\u4E2D\u53BB\u9664\u5E76\u5C1D\u8BD5\u83B7\u53D6\u53E6\u4E00\u4E2A
+      # 指明是否从池中取出连接前进行校验，校验失败则从池中去除并尝试获取另一个
       test-on-borrow: true
-      # \u6307\u660E\u662F\u5426\u5F52\u8FD8\u5230\u6C60\u4E2D\u9700\u8981\u6821\u9A8C
+      # 指明是否归还到池中需要校验
       test-on-return: false
-      # \u6307\u660E\u8FDE\u63A5\u662F\u5426\u88AB\u7A7A\u95F2\u8FDE\u63A5\u56DE\u6536\u5668(\u5982\u679C\u6709)\u8FDB\u884C\u68C0\u9A8C.\u5982\u679C\u68C0\u6D4B\u5931\u8D25,\u5219\u8FDE\u63A5\u5C06\u88AB\u4ECE\u6C60\u4E2D\u53BB\u9664
+      # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除
       test-while-idle: false
       filters: stat,wall
       filter:
@@ -29,10 +29,10 @@ spring:
           db-type: mysql
           log-slow-sql: true
           slow-sql-millis: 1
-      # url\u76D1\u63A7
+      # url监控
       web-stat-filter:
         enabled: true
-        # \u542F\u7528session\u7EDF\u8BA1
+        # 启用session统计
         session-stat-enable: true
         exclusions:
           - "*.js"
@@ -42,16 +42,15 @@ spring:
           - "*.css"
           - "*.ico"
           - "/druid/*"
-      # \u76D1\u63A7\u4FE1\u606F   localhost:${server.port}/druid/login.html
+      # 监控信息   localhost:${server.port}/druid/login.html
       stat-view-servlet:
-        # sql\u76D1\u63A7\u5F00\u5173
+        # sql监控开关
         enabled: true
         allow: ""
         url-pattern: /druid/*
         login-username: zz
         login-password: zz
         reset-enable: false
-
   redis:
     database: 0
     host: 192.168.10.121
@@ -69,9 +68,9 @@ mybatis-plus:
     db-config:
       id-type: auto
     field-strategy: not_empty
-    #\u9A7C\u5CF0\u4E0B\u5212\u7EBF\u8F6C\u6362
+    #驼峰下划线转换
     column-underline: true
-    #\u903B\u8F91\u5220\u9664\u914D\u7F6E
+    #逻辑删除配置
     logic-delete-value: 0
     logic-not-delete-value: 1
     db-type: mysql
