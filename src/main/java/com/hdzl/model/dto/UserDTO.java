@@ -1,8 +1,10 @@
-package com.hdzl.model;
+package com.hdzl.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * 项目名称:     hdzl
@@ -19,10 +21,12 @@ public class UserDTO {
     /**
      * 账户
      */
+    @NotNull(message = "账户id不能为空")
     String userName;
 
     /**
      * 密码
      */
+    @NotNull(message = "密码不能为空")
     String passWord;
 }

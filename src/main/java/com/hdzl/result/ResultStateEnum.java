@@ -17,7 +17,8 @@ public enum ResultStateEnum {
 
     SUCCESS(200,"success"),
     ERROR(400,"error"),
-    //1000以内是系统错误，
+
+    // 1000以内是系统错误，
     REQUEST_PARAM_IS_NULL(1000,"请求参数为空"),
     REQUEST_INVALID_PARAM(1001,"请求参数有误"),
     ADMIN_IS_EXISTED(1002,"管理员账号已经存在"),
@@ -65,10 +66,11 @@ public enum ResultStateEnum {
     http_status_loop_detected(508, "Loop Detected"),
     http_status_bandwidth_limit_exceeded(509, "Bandwidth Limit Exceeded"),
     http_status_not_extended(510, "Not Extended"),
-    http_status_network_authentication_required(511, "Network Authentication Required");;
+    http_status_network_authentication_required(511, "Network Authentication Required");
 
     // 返回的状态码
     int code;
+
     // 返回的消息描述
     String message;
 

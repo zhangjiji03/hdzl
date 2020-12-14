@@ -21,12 +21,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Result {
-    // 返回的状态码
+
+    /**
+     * 返回的状态码
+     */
     int code;
-    // 返回的消息描述
+
+    /**
+     * 返回的消息描述
+     */
     String message;
-    // 返回的消息体
+
+    /**
+     * 返回的消息体
+     */
     Object data;
-    // 返回当前时间戳
+
+    /**
+     *  返回当前时间戳
+     */
     String timestamp;
 }

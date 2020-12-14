@@ -1,13 +1,15 @@
 package com.hdzl.controller;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.hdzl.model.UserDTO;
+import com.hdzl.model.dto.UserDTO;
 import com.hdzl.result.Result;
-import com.hdzl.result.ResultUtil;
+import com.hdzl.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * 项目名称:     hdzl
@@ -19,16 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping("/user")
 @RestController
+@Validated
 public class LoginController {
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping("/login")
-    public Result login(@RequestBody UserDTO userDTO){
-        return ResultUtil.success();
+    public Result login(@RequestBody @Valid UserDTO userDTO){
+        return userService.login(userDTO);
+
     }
 
-    public static void main(String[] args) {
-        String token= JWT.create().withAudience("123")// 将 user id 保存到 token 里面
-                .sign(Algorithm.HMAC256("123"));// 以 password 作为 token 的密钥
-        System.out.println(token);
+    @RequestMapping("/selctUserList")
+    public Result selctUserList(){
+        return userService.selctUserList();
     }
 }

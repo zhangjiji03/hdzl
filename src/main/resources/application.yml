@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 20069
 spring:
   application: hdzl
   datasource:
@@ -22,6 +22,10 @@ spring:
       test-on-return: false
       # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除
       test-while-idle: false
+      # 属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：
+      # 监控统计用的filter:stat
+      # 日志用的filter:log4j
+      # 防御sql注入的filter:wall
       filters: stat,wall
       filter:
         stat:
@@ -34,6 +38,7 @@ spring:
         enabled: true
         # 启用session统计
         session-stat-enable: true
+        # 经常需要排除一些不必要的url，比如*.js,/jslib/*等等
         exclusions:
           - "*.js"
           - "*.gif"
@@ -77,4 +82,5 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-  mapper-locations: classpath*:mapper/*mapper.xml
+  mapper-locations: classpath*:mapping/*Mapping.xml
+
