@@ -8,8 +8,10 @@ public class SnowFlakeGenerator {
         /**
          * 每一部分占用位数的默认值
          */
-        private final static int DEFAULT_MACHINE_BIT_NUM = 5;   //机器标识占用的位数
-        private final static int DEFAULT_IDC_BIT_NUM = 5;//数据中心占用的位数
+        // 机器标识占用的位数
+        private final static int DEFAULT_MACHINE_BIT_NUM = 5;
+        // 数据中心占用的位数
+        private final static int DEFAULT_IDC_BIT_NUM = 5;
         private int machineBitNum;
         private int idcBitNum;
         public Factory() {
