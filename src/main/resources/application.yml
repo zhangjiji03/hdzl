@@ -103,6 +103,7 @@ mybatis-plus:
   # 启动时是否检查 MyBatis XML 文件的存在，默认不检查
   check-config-location: false
 
+# mybatis-plus输出日志
 logging:
   level:
     com.baomidou.mybatisplus.samples: debug
