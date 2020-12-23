@@ -28,7 +28,7 @@ public class UserPO {
      */
 
     @TableId("userId")
-    int id;
+    int userId;
 
     /**
      * 账户

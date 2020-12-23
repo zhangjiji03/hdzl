@@ -2,10 +2,13 @@ server:
   port: 20069
 spring:
   application: hdzl
+  main:
+    # 设置为true时，后定义的bean会覆盖之前定义的相同名称的bean
+    allow-bean-definition-overriding: true
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/hdzl?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
       username: root
       password: a111
       # 初始化连接数
@@ -88,6 +91,7 @@ mybatis-plus:
     # 开启Mybatis二级缓存，默认为 true
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
     # Mybatis一级缓存，默认为 SESSION。SESSION session级别缓存，同一个session相同查询语句不会再次查询数据库
     # STATEMENT 关闭一级缓存
     # 单服务架构中（有且仅有只有一个程序提供相同服务），一级缓存开启不会影响业务，只会提高性能。 微服务架构中需要关闭一级缓存，原因：Service1先查询数据，若之后Service2修改了数据，之后Service1又再次以同样的查询条件查询数据，因走缓存会出现查处的数据不是最新数据
@@ -97,5 +101,13 @@ mybatis-plus:
   # MyBaits 别名包扫描路径，通过该属性可以给包中的类注册别名，注册后在 Mapper 对应的 XML 文件中可以直接使用类名，而不用使用全限定的类名(即 XML 中调用的时候不用包含包名
   # type-aliases-package:
   # 启动时是否检查 MyBatis XML 文件的存在，默认不检查
-  check-config-location: true
+  check-config-location: false
+
+logging:
+  level:
+    com.baomidou.mybatisplus.samples: debug
+
+# 设置token过期时间s
+outTime: 30000
+
 

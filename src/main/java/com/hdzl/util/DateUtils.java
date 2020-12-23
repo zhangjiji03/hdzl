@@ -39,6 +39,81 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     }
 
     /**
+     * 获取时间戳
+     *
+     * @return yyyyMMddHHmmss
+     */
+    public static String getTime() {
+        return new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+    }
+
+    /**
+     * 获取格式为yyyy-MM-dd的系统时间
+     *
+     * @return yyyy-MM-dd
+     */
+    public static String getTimes() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    }
+
+    /**
+     * 获取格式为yyyy-MM-dd HH:mm:ss的系统时间
+     *
+     * @return yyyy-MM-dd HH:mm:ss
+     */
+    public static String getSystemTime() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
+
+    /**
+     * 获取格式为yyyy-MM-dd HH:mm系统时间
+     *
+     * @return yyyy-MM-dd HH:mm
+     */
+    public static String getSystemTimes() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());
+    }
+
+    /**
+     * 获取yyyy年MM月dd日 HH:mm格式的系统时间
+     *
+     * @return
+     */
+    public static String getChineseFormatTime() {
+        return new SimpleDateFormat("yyyy年MM月dd日 HH:mm").format(new Date());
+    }
+
+    /**
+     * 过去当前的年月
+     */
+    public static String getCurrentYearAndMonth() {
+        return new SimpleDateFormat("yyyyMM").format(new Date());
+    }
+
+    /**
+     * 把传入的日期类型的数据转换成字符串类型
+     *
+     * @param date
+     * @return yyyy-MM-dd HH:mm:ss
+     */
+    public static String dateToString(Date date) {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+    }
+
+
+    /**
+     * 把String类型的时间戳转换成yyyy-MM-dd HH:mm:ss
+     * @param timeStamp 时间戳
+     * @return yyyy-MM-dd HH:mm:ss
+     */
+    public static String dateFormat(String timeStamp){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long lt = new Long(timeStamp);
+        Date date = new Date(lt);
+        return simpleDateFormat.format(date);
+    }
+
+    /**
      * 获取当前日期, 默认格式为yyyy-MM-dd
      * 
      * @return String
@@ -48,7 +123,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         return dateTimeNow(YYYY_MM_DD);
     }
 
-    public static final String getTime()
+    public static final String getNewTime()
     {
         return dateTimeNow(YYYY_MM_DD_HH_MM_SS);
     }

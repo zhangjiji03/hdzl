@@ -8,7 +8,7 @@ import com.hdzl.model.po.UserPO;
 import com.hdzl.result.Result;
 import com.hdzl.result.ResultUtil;
 import com.hdzl.service.UserService;
-import com.hdzl.util.TokenUtil;
+import com.hdzl.util.JwtTokenUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -35,15 +35,18 @@ public class UserServiceImpl  implements UserService {
     @Resource
     UserMapper userMapper;
 
+    @Autowired
+    JwtTokenUtil jwtTokenUtil;
+
     @Override
     public Result login(UserDTO userDTO) {
         UserPO userPO=UserPO.builder().build();
         BeanUtils.copyProperties(userDTO,userPO );
         userPO=userMapper.selectOne(Wrappers.<UserPO>lambdaQuery().eq(UserPO::getUserName, userPO.getUserName()).eq(UserPO::getPassWord,userPO.getPassWord()));
         if(userPO!=null){
-            String token= TokenUtil.sign(userDTO.getUserName(),userDTO.getPassWord());
-            redis.opsForValue().set(RedisKey.USER_TKOEN_KEY.concat(token),userPO.toString(), 30000, TimeUnit.SECONDS);
-            return ResultUtil.success();
+            String token= jwtTokenUtil.generateToken(userDTO.getUserName());
+            redis.opsForValue().set(RedisKey.USER_TKOEN_KEY.concat(token),"123", 30000, TimeUnit.SECONDS);
+            return ResultUtil.success(token);
         }else{
             return ResultUtil.error("用户不存在");
         }
