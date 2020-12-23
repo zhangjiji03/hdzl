@@ -24,9 +24,12 @@ public class AsyncConfig {
         // 允许线程空闲时间(单位：默认为秒)
         executor.setKeepAliveSeconds(60);
         // 线程池名前缀
-        executor.setThreadNamePrefix("ailinkExecutor-");
+        executor.setThreadNamePrefix("Executor-");
+        // 配置拒绝策略
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        // 设置是否等待计划的任务在关闭时完成，而不中断正在运行的任务并执行队列中的所有任务
         executor.setWaitForTasksToCompleteOnShutdown(true);
+        // 设置该执行程序在关闭时应阻塞的最大秒数，以等待其余任务完成其执行，然后容器的其余部分继续关闭
         executor.setAwaitTerminationSeconds(60);
         return executor;
     }
