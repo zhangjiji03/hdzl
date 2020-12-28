@@ -9,6 +9,7 @@ import com.zz.result.Result;
 import com.zz.result.ResultUtil;
 import com.zz.service.UserService;
 import com.zz.util.JwtTokenUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -25,6 +26,7 @@ import java.util.concurrent.TimeUnit;
  * 创建时间:     2020/12/8 14:12
  * 版本:         1.0
  */
+@Slf4j
 @Service
 public class UserServiceImpl  implements UserService {
 
@@ -42,6 +44,7 @@ public class UserServiceImpl  implements UserService {
     public Result login(UserDTO userDTO) {
         UserPO userPO=UserPO.builder().build();
         BeanUtils.copyProperties(userDTO,userPO );
+        tets();
         userPO=userMapper.selectOne(Wrappers.<UserPO>lambdaQuery().eq(UserPO::getUserName, userPO.getUserName()).eq(UserPO::getPassWord,userPO.getPassWord()));
         if(userPO!=null){
             String token= jwtTokenUtil.generateToken(userDTO.getUserName());
@@ -55,4 +58,18 @@ public class UserServiceImpl  implements UserService {
     public Result selctUserList(){
         return ResultUtil.success();
     }
+
+
+    // @Scheduled(fixedRate = 10000)
+    public  void  tets(){
+        log.info("测速");
+        System.out.println("tets");
+    }
+
+    public void ha(){
+        System.out.println("haha");
+    }
+
+
+
 }
