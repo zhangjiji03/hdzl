@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAsync
 @MapperScan("com.zz.mapper")
 @SpringBootApplication
-public class zzApplication {
+public  class zzApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(zzApplication.class, args);

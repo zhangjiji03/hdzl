@@ -3,6 +3,8 @@ package com.zz.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.zz.constant.RedisKey;
 import com.zz.mapper.UserMapper;
+import com.zz.mapper.BookMapper;
+import com.zz.model.Book;
 import com.zz.model.dto.UserDTO;
 import com.zz.model.po.UserPO;
 import com.zz.result.Result;
@@ -14,6 +16,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
@@ -40,6 +43,9 @@ public class UserServiceImpl  implements UserService {
     @Autowired
     JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
+    BookMapper hhaha;
+
     @Override
     public Result login(UserDTO userDTO) {
         UserPO userPO=UserPO.builder().build();
@@ -55,8 +61,17 @@ public class UserServiceImpl  implements UserService {
         }
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public Result selctUserList(){
-        return ResultUtil.success();
+
+        UserPO userPO=UserPO.builder().userId(5).userName("888").passWord("888").build();
+        userMapper.insert(userPO);
+        Book book1 = Book.builder().name("888").build();
+
+        hhaha.insert(book1);
+
+        throw new NullPointerException();
+        // return ResultUtil.success();
     }
 
 

@@ -1,14 +1,24 @@
 server:
-  port: 20069
+  port: 23654
 spring:
   application: hdzl
+  thymeleaf:
+    # 不缓存
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+    # 静态页面所在的路径，一般在resources文件加下创建
+    prefix: classpath:/templates/
+    suffix: .html
+    #content-type: text/html
+
   main:
     # 设置为true时，后定义的bean会覆盖之前定义的相同名称的bean
     allow-bean-definition-overriding: true
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://192.168.10.198:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
       username: root
       password: a111
       # 初始化连接数
@@ -70,6 +80,8 @@ spring:
       max-idle: 8
       max-wait: -1
       min-idle: 0
+  mvc:
+    static-path-pattern: /static/**
 
 mybatis-plus:
   global-config:

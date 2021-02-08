@@ -2,6 +2,7 @@ package com.zz.controller;
 
 import com.zz.model.dto.UserDTO;
 import com.zz.result.Result;
+import com.zz.result.ResultUtil;
 import com.zz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,10 +20,9 @@ import javax.validation.Valid;
  * 创建时间:     2020/12/7 11:25
  * 版本:         1.0
  */
-@RequestMapping("/user")
 @RestController
 @Validated
-public class LoginController {
+public class UserController {
 
     @Autowired
     UserService userService;
@@ -37,4 +37,12 @@ public class LoginController {
     public Result selctUserList(){
         return userService.selctUserList();
     }
+
+    @RequestMapping("/test")
+    public Result test(){
+        return ResultUtil.success("测试成立");
+
+    }
+
+
 }

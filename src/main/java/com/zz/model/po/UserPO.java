@@ -1,5 +1,6 @@
 package com.zz.model.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -26,8 +27,7 @@ public class UserPO {
     /**
      * 用户id
      */
-
-    @TableId("userId")
+    @TableId(value = "userId",type = IdType.AUTO)
     int userId;
 
     /**
