@@ -2,9 +2,8 @@ package com.zz.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.zz.constant.RedisKey;
-import com.zz.mapper.UserMapper;
 import com.zz.mapper.BookMapper;
-import com.zz.model.Book;
+import com.zz.mapper.UserMapper;
 import com.zz.model.dto.UserDTO;
 import com.zz.model.po.UserPO;
 import com.zz.result.Result;
@@ -50,7 +49,6 @@ public class UserServiceImpl  implements UserService {
     public Result login(UserDTO userDTO) {
         UserPO userPO=UserPO.builder().build();
         BeanUtils.copyProperties(userDTO,userPO );
-        tets();
         userPO=userMapper.selectOne(Wrappers.<UserPO>lambdaQuery().eq(UserPO::getUserName, userPO.getUserName()).eq(UserPO::getPassWord,userPO.getPassWord()));
         if(userPO!=null){
             String token= jwtTokenUtil.generateToken(userDTO.getUserName());
@@ -63,26 +61,7 @@ public class UserServiceImpl  implements UserService {
 
     @Transactional(rollbackFor = Exception.class)
     public Result selctUserList(){
-
-        UserPO userPO=UserPO.builder().userId(5).userName("888").passWord("888").build();
-        userMapper.insert(userPO);
-        Book book1 = Book.builder().name("888").build();
-
-        hhaha.insert(book1);
-
-        throw new NullPointerException();
-        // return ResultUtil.success();
-    }
-
-
-    // @Scheduled(fixedRate = 10000)
-    public  void  tets(){
-        log.info("测速");
-        System.out.println("tets");
-    }
-
-    public void ha(){
-        System.out.println("haha");
+        return ResultUtil.success();
     }
 
 

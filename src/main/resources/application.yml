@@ -1,6 +1,9 @@
 server:
-  port: 23654
+  port: 8989
 spring:
+  main:
+    # 设置为true时，后定义的bean会覆盖之前定义的相同名称的bean
+    allow-bean-definition-overriding: true
   application: hdzl
   thymeleaf:
     # 不缓存
@@ -10,17 +13,14 @@ spring:
     # 静态页面所在的路径，一般在resources文件加下创建
     prefix: classpath:/templates/
     suffix: .html
-    #content-type: text/html
+    content-type: text/html
 
-  main:
-    # 设置为true时，后定义的bean会覆盖之前定义的相同名称的bean
-    allow-bean-definition-overriding: true
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.10.198:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://39.104.90.123:3306/zz?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
       username: root
-      password: a111
+      password: zz123
       # 初始化连接数
       initial-size: 10
       # 最小空闲连接
@@ -71,7 +71,7 @@ spring:
         reset-enable: false
   redis:
     database: 0
-    host: 192.168.10.121
+    host: 39.104.90.123
     password: 123456
     port: 6379
     timeout: 1200

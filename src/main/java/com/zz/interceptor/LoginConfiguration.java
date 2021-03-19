@@ -1,6 +1,6 @@
 package com.zz.interceptor;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -21,10 +21,8 @@ public class LoginConfiguration implements WebMvcConfigurer {
      * @author: YangXueFeng
      * @Date: 2019/4/14 13:10
      */
-    @Bean
-    TokenInterceptor tokenInterceptor() {
-        return new TokenInterceptor();
-    }
+    @Autowired
+    NewTokenInterceptor newTokenInterceptor;
 
     /**
      * @Function: 配置生成器：添加一个拦截器，拦截路径为login以后的路径
@@ -33,7 +31,7 @@ public class LoginConfiguration implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(tokenInterceptor()).addPathPatterns("/**").excludePathPatterns("/login","/templates", "/register", "/static");
+        registry.addInterceptor(newTokenInterceptor).addPathPatterns("/**").excludePathPatterns("/login","/templates", "/register", "/static");
     }
 
 }

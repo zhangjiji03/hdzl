@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * 版本:         1.0
  */
 @Component
-public class TokenInterceptor implements HandlerInterceptor{
+public class NewTokenInterceptor implements HandlerInterceptor{
 
 
     @Autowired
