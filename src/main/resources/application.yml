@@ -18,9 +18,9 @@ spring:
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://39.104.90.123:3306/zz?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://localhost:3306/zz?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
       username: root
-      password: zz123
+      password: a111
       # 初始化连接数
       initial-size: 10
       # 最小空闲连接
