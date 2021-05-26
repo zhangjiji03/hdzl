@@ -41,8 +41,6 @@ public class UserServiceImpl  implements UserService {
     @Autowired
     JwtTokenUtil jwtTokenUtil;
 
-    @Autowired
-    BookMapper hhaha;
 
     @Override
     public Result login(UserDTO userDTO) {
