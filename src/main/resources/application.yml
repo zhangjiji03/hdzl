@@ -4,16 +4,7 @@ spring:
   main:
     # 设置为true时，后定义的bean会覆盖之前定义的相同名称的bean
     allow-bean-definition-overriding: true
-  application: hdzl
-  thymeleaf:
-    # 不缓存
-    cache: false
-    mode: HTML5
-    encoding: UTF-8
-    # 静态页面所在的路径，一般在resources文件加下创建
-    prefix: classpath:/templates/
-    suffix: .html
-    content-type: text/html
+  application: AiBoatApi
 
   datasource:
     druid:
