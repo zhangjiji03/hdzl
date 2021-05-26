@@ -2,7 +2,6 @@ package com.zz.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.zz.constant.RedisKey;
-import com.zz.mapper.BookMapper;
 import com.zz.mapper.UserMapper;
 import com.zz.model.dto.UserDTO;
 import com.zz.model.po.UserPO;
