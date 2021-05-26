@@ -15,5 +15,4 @@ public interface UserService {
 
     Result login(UserDTO userDTO);
 
-    Result selctUserList();
 }

@@ -1,6 +1,5 @@
 package com.aiboatapi.service.impl;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.aiboatapi.constant.RedisKey;
 import com.aiboatapi.mapper.UserMapper;
 import com.aiboatapi.model.dto.UserDTO;
@@ -9,12 +8,12 @@ import com.aiboatapi.result.Result;
 import com.aiboatapi.result.ResultUtil;
 import com.aiboatapi.service.UserService;
 import com.aiboatapi.util.JwtTokenUtil;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
@@ -55,12 +54,5 @@ public class UserServiceImpl  implements UserService {
             return ResultUtil.error("用户不存在");
         }
     }
-
-    @Transactional(rollbackFor = Exception.class)
-    public Result selctUserList(){
-        return ResultUtil.success();
-    }
-
-
 
 }
