@@ -5,7 +5,6 @@ import com.zz.result.Result;
 import com.zz.result.ResultUtil;
 import com.zz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +20,6 @@ import javax.validation.Valid;
  * 版本:         1.0
  */
 @RestController
-@Validated
 public class UserController {
 
     @Autowired
