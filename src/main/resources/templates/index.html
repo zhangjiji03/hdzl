@@ -11,13 +11,6 @@
     <script src="../static/js/lay/jquery-3.4.1.min.js"></script>
 	<script src="../static/js/lay/modules/element.js"></script>
 	<script src="../static/js/layui.js"></script>
-    <script>
-        function test() {
-            $.ajax("https://www.baidu.com/"
-            )
-        }
-
-    </script>
 	<script>
 	layui.use('element', function(){
 	  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
@@ -29,7 +22,7 @@
 	  });
 	  element.on('nav(test)', function(elem){
 		var url = $(elem).attr("data-url");
-		url = window.location.origin+"/html/"+url+".html";
+		url = window.location.origin+"/"+url+".html";
 		console.log(url)
 		$("#myif").attr("src",url);
 	  });
@@ -75,10 +68,10 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">管理员模块</a>
 					<dl class="layui-nav-child layui-this">
-						<dd><a href=""  data-url="user">用户信息列表</a></dd>
-						<dd><a href="" data-url="test">注册个人用户</a></dd>
-						<dd><a href="">注册基站用户</a></dd>
-						<dd><a href="">新增组织机构</a></dd>
+						<dd><a data-url="user">用户信息列表</a></dd>
+						<dd><a data-url="test">注册个人用户</a></dd>
+						<dd><a data-url="user">注册基站用户</a></dd>
+						<dd><a data-url="test">新增组织机构</a></dd>
 						<dd><a href="">更改部门名称</a></dd>
 						<dd><a href="">删除部门信息</a></dd>
 					</dl>
@@ -127,6 +120,5 @@
         © telecomyt.com - 北京电信易通股份信息有限公司
     </div>
 </div>
-<script src="../src/layui.js"></script>
 </body>
 </html>

@@ -111,7 +111,23 @@
                         //
                         //     }
                         // )
+
+                        $.ajaxSetup({
+
+                            complete: function (xhr) {
+                                if (xhr.responseJSON.code == "error_unauth") {
+                                    layer.msg("未登录")
+                                }
+                            },
+                            beforeSend: function (xhr){
+                                // 设置请求头
+                                xhr.setRequestHeader('token',token)
+                            }
+                        })
+
                         window.location.href=window.location.origin+"/index.html";
+
+
                     } else {
                         layer.msg("账号密码错误");
                     }

@@ -71,8 +71,8 @@ spring:
         reset-enable: false
   redis:
     database: 0
-    host: 39.104.90.123
-    password: 123456
+    host: 39.104.89.156
+    password:
     port: 6379
     timeout: 1200
     pool:
