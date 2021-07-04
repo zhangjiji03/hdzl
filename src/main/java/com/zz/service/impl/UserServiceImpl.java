@@ -11,8 +11,10 @@ import com.zz.result.ResultUtil;
 import com.zz.service.UserService;
 import com.zz.util.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,17 +47,25 @@ public class UserServiceImpl  implements UserService {
     @Autowired
     BookMapper hhaha;
 
+    @Value("${outTime}")
+    public String outTime;
+
     @Override
     public Result login(UserDTO userDTO) {
         UserPO userPO=UserPO.builder().build();
         BeanUtils.copyProperties(userDTO,userPO );
         userPO=userMapper.selectOne(Wrappers.<UserPO>lambdaQuery().eq(UserPO::getUserName, userPO.getUserName()).eq(UserPO::getPassWord,userPO.getPassWord()));
         if(userPO!=null){
-            String token= jwtTokenUtil.generateToken(userDTO.getUserName());
-            redis.opsForValue().set(RedisKey.USER_TKOEN_KEY.concat(token),"123", 30000, TimeUnit.SECONDS);
+            String userId=String.valueOf(userPO.getUserId());
+            String token=redis.opsForValue().get(RedisKey.USER_TKOEN_KEY.concat(userId));
+            if(StringUtils.isNotBlank(token)){
+                redis.delete(RedisKey.USER_TKOEN_KEY.concat(userId));
+            }
+            token= jwtTokenUtil.generateToken(userDTO.getUserName());
+            redis.opsForValue().set(RedisKey.USER_TKOEN_KEY.concat(userId),token, Long.parseLong(outTime), TimeUnit.SECONDS);
             return ResultUtil.success(token);
         }else{
-            return ResultUtil.error("用户不存在");
+            return ResultUtil.error("账号密码错误");
         }
     }
 
