@@ -43,4 +43,12 @@ public class PageController {
         return "user";
     }
 
+    /**
+     * 用户列表
+     * @return
+     */
+    @GetMapping({ "/test", "/test.html"})
+    public String test() {
+        return "test";
+    }
 }

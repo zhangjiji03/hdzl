@@ -30,7 +30,7 @@ public class NewTokenInterceptor implements HandlerInterceptor{
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handle) throws Exception {
-        if (request.getRequestURI().contains("/login") || request.getRequestURI().contains("/index")|| request.getRequestURI().contains("/register") || request.getRequestURI().contains("/error") || request.getRequestURI().contains("/static")) {
+        if (request.getRequestURI().contains("/login") || request.getRequestURI().contains("/templates")|| request.getRequestURI().contains("/register") || request.getRequestURI().contains("/error") || request.getRequestURI().contains("/static")) {
             return true;
         }
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -48,6 +48,7 @@ public class NewTokenInterceptor implements HandlerInterceptor{
             response.setStatus(HttpServletResponse.SC_OK);
             return true;
         } else if (token != null) {
+
             // token不为空，验证是否token是否过期,再验证token是否合法
             if(jwtTokenUtil.isTokenExpired(token)){
                 String username=jwtTokenUtil.getUsernameFromToken(token);
