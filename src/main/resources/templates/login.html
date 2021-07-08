@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>英雄联盟</title>
+    <title>欢迎登录使用</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -39,7 +39,7 @@
     <div></div>
     <div class="admin-login-background">
         <div class="admin-header ">
-            <span>劈里啪啦</span>
+            <span>登录</span>
         </div>
         <div class="layui-form" action="" >
             <div>
@@ -98,34 +98,7 @@
                     if (data.code == 200) {
                         var  token=data.message;
                         sessionStorage.setItem("token",token);
-                        // $.ajax(
-                        //     {
-                        //         url: '/index',
-                        //         type: 'get',
-                        //         headers: {'token':token},
-                        //         // 是否异步
-                        //         async: false,
-                        //         // 处理返回结果
-                        //
-                        //
-                        //
-                        //     }
-                        // )
 
-                        // $.ajaxSetup({
-                        //
-                        //     complete: function (xhr) {
-                        //         if (xhr.responseJSON.code == "error_unauth") {
-                        //             layer.msg("未登录")
-                        //         }
-                        //     },
-                        //     beforeSend: function (xhr){
-                        //         // 设置请求头
-                        //         xhr.setRequestHeader('token',token)
-                        //     }
-                        // })
-                       // window.location.setRequestHeader("token",token),
-                       // window.location.href=window.location.origin+"/index.html";
                         $.ajax({
                             url: '/page/index',
                             type: 'get',
@@ -145,28 +118,6 @@
                 }
             }
         )
-
-/*        form.on('submit(login)', function (data) {
-            data = data.field;
-            if (data.username == '') {
-                layer.msg('用户名不能为空');
-                return false;
-            }
-            if (data.password == '') {
-                layer.msg('密码不能为空');
-                return false;
-            }
-            if (data.captcha == '') {
-                layer.msg('验证码不能为空');
-                return false;
-            }
-
-           /!* layer.msg('登录成功', function () {
-                window.location = 'index.html';
-				console.log("asd")
-            });*!/
-            return false;
-        });*/
     };
 
 
