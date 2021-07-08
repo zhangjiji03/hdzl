@@ -120,7 +120,7 @@ logging:
   level:
     com.baomidou.mybatisplus.samples: debug
 
-# 设置token过期时间s
-outTime: 30000
+# 设置token过期时间毫秒
+outTime: 300000000
 
 

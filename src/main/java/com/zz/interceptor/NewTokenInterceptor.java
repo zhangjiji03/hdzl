@@ -30,7 +30,8 @@ public class NewTokenInterceptor implements HandlerInterceptor{
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handle) throws Exception {
-        if (request.getRequestURI().contains("/login") || request.getRequestURI().contains("/templates")|| request.getRequestURI().contains("/register") || request.getRequestURI().contains("/error") || request.getRequestURI().contains("/static")) {
+        String requestURI = request.getRequestURI();
+        if (requestURI.contains("/login") || requestURI.contains("/templates") || requestURI.contains("/register") || requestURI.contains("/error") || requestURI.contains("/page") || requestURI.contains("/static")) {
             return true;
         }
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -59,7 +60,7 @@ public class NewTokenInterceptor implements HandlerInterceptor{
         }
         Result result = ResultUtil.error("用户过期，请重新登录");
         String json = JSONObject.toJSONString(result);
-        response.sendRedirect(request.getContextPath() + "/login");
+        response.sendRedirect(request.getContextPath() + "/page/login");
         response.getWriter().write(json);
         return false;
     }

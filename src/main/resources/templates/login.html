@@ -127,11 +127,11 @@
                        // window.location.setRequestHeader("token",token),
                        // window.location.href=window.location.origin+"/index.html";
                         $.ajax({
-                            url: 'index',
+                            url: '/page/index',
                             type: 'get',
                             async: false,
                             headers: {
-                               "token": token
+                                "token": token
                             },
                             success: function (data) {
                                 document.write(data)

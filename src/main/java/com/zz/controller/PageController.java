@@ -2,6 +2,7 @@ package com.zz.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 项目名称:     hdzl
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 版本:         1.0
  */
 @Controller
+@RequestMapping("/page")
 public class PageController {
 
 
