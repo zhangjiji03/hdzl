@@ -99,17 +99,7 @@
                         var  token=data.message;
                         sessionStorage.setItem("token",token);
 
-                        $.ajax({
-                            url: '/page/index',
-                            type: 'get',
-                            async: false,
-                            headers: {
-                                "token": token
-                            },
-                            success: function (data) {
-                                document.write(data)
-                            }
-                        })
+                        window.location = '/page/index.html';
 
                     } else {
                         layer.msg("账号密码错误");

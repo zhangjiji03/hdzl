@@ -23,8 +23,12 @@
 	  });
 	  element.on('nav(test)', function(elem) {
 		  var url = $(elem).attr("data-url");
-		  url = window.location.origin + "/page/" + url + ".html";
-		  $("#myif").attr("src", url);
+		  if (url == null || url == undefined || url == '') {
+			  $("#myif").attr("src", );
+		  }else{
+			  url = window.location.origin + "/page/" + url + ".html";
+			  $("#myif").attr("src", url);
+		  }
 	  });
 	  
 	});
@@ -40,11 +44,11 @@
 		            <img src="../static/img/zz.jpg" class="layui-nav-img">
 		        </a>
 		        <dl class="layui-nav-child">
-		            <dd><a href="">基本资料</a></dd>
-		            <dd><a href="">安全设置</a></dd>
+		            <dd><a >基本资料</a></dd>
+		            <dd><a >安全设置</a></dd>
 		        </dl>
 		    </li>
-		    <li class="layui-nav-item"><a href="/login.html">退出登录</a></li>
+		    <li class="layui-nav-item"><a href="/page/login.html">退出登录</a></li>
 		</ul>
         <!-- 头部区域（可配合layui已有的水平导航） -->
        <!-- <ul class="layui-nav layui-layout-left">
